@@ -3,16 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TeamsComponent } from './teams/teams.component';
+import { TeamModule } from './team/team.module';
+import { TeamsTableModule } from './teams-table/teams-table.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TeamsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TeamsTableModule,
+    TeamModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

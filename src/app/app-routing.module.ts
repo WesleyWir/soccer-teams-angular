@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TeamsComponent } from './teams/teams.component';
+import { TeamComponent } from './team/team/team.component';
+import { TableComponent } from './teams-table/table/table.component';
 
 const routes: Routes = [
-  {  path: 'teams', component: TeamsComponent}
+  {  path: 'team', component: TeamComponent},
+  {  path: 'team/:id', component: TeamComponent},
+  {  path: 'teams', component: TableComponent}
 ];
 
 @NgModule({
