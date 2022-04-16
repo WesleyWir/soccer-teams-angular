@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { Team } from 'src/app/models/team.model';
 
@@ -10,6 +10,7 @@ import { Team } from 'src/app/models/team.model';
 export class RowComponent implements OnInit {
   @Input() team: Team;
   @Input() index: number;
+  @Output() deleteEvent = new EventEmitter();
 
   public faPen = faPen;
   public faTrashCan = faTrashCan;
@@ -18,6 +19,10 @@ export class RowComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  deleteButtonPress(){
+    this.deleteEvent.emit(this.index);
   }
 
 }

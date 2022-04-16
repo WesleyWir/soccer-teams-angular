@@ -1,5 +1,15 @@
+<swal
+  #deleteSwal
+  title="Delete {{ team.name }}?"
+  text="Não pode ser desfeito."
+  icon="warning"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="deleteButtonPress()">
+</swal>
+
 <tr class="first-positions">
-    <th scope="row">{{ index }}</th>
+    <th scope="row">{{ index + 1 }}</th>
     <td>{{ team.name }}</td>
     <td>{{ team.wins }}</td>
     <td>{{ team.defeats }}</td>
@@ -7,6 +17,6 @@
     <td>{{ team.points }}</td>
     <td class="w-25">
         <a class="btn btn-primary w-25 mr-5" [routerLink]="['/team', index]"><fa-icon [icon]="faPen"></fa-icon></a>
-        <button class="btn btn-danger"><fa-icon [icon]="faTrashCan"></fa-icon></button>
+        <button class="btn btn-danger" [swal]="deleteSwal"><fa-icon [icon]="faTrashCan"></fa-icon></button>
     </td>
 </tr>

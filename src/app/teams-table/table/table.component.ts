@@ -10,10 +10,15 @@ import { TeamService } from 'src/app/services/team.service';
 export class TableComponent implements OnInit {
   teams: Team[] = [];
 
-  constructor(public teamsService: TeamService) {
+  constructor(
+    public teamsService: TeamService) {
     this.teams = this.teamsService.getAllTeams();
   }
 
   ngOnInit(): void {
+  }
+
+  deleteEvent(i: number) {
+    this.teamsService.deleteTeam(i);
   }
 }

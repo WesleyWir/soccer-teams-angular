@@ -26,7 +26,7 @@ export class TeamService {
     this.orderTeams()
   }
 
-  removeTeam(id: number) {
+  deleteTeam(id: number) {
     return this.teams.splice(id, 1);
   }
 

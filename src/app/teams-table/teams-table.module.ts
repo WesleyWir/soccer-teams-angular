@@ -4,6 +4,7 @@ import { TableComponent } from './table/table.component';
 import { RowComponent } from './row/row.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -13,8 +14,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   imports: [
     CommonModule,
+    SweetAlert2Module.forRoot(),
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
   ],
 })
 export class TeamsTableModule { }
