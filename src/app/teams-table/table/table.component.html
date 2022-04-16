@@ -1,6 +1,11 @@
 <main class="container">
-    <section id="title" class="">
-        <h2>Tabela</h2>
+    <section id="table-header" class="d-flex justify-content-between">
+        <div class="title">
+            <h2>Tabela</h2>
+        </div>
+        <div class="btns">
+            <a class="btn btn-success fw-bold" routerLink="/team">Adicionar Time</a>
+        </div>
     </section>
     <section id="teams" class="">
         <div class="team">
@@ -16,7 +21,6 @@
                     </tr>
                 </thead>
                 <tbody app-table-row>
-                    
                 </tbody>
             </table>
         </div>

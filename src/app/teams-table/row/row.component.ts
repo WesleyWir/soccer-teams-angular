@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-table-row, [app-table-row]',
@@ -7,8 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RowComponent implements OnInit {
 
+  public faPen = faPen;
+  public faTrashCan = faTrashCan;
   @Input() public team: object;
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
