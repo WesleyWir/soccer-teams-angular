@@ -1,22 +1,32 @@
-<swal
-  #deleteSwal
-  title="Delete {{ team.name }}?"
-  text="Não pode ser desfeito."
-  icon="warning"
-  [showCancelButton]="true"
-  [focusCancel]="true"
-  (confirm)="deleteButtonPress()">
+<swal #deleteSwal title="Delete {{ team.name }}?" text="Não pode ser desfeito." icon="warning" [showCancelButton]="true"
+  [focusCancel]="true" (confirm)="deleteButtonPress()">
 </swal>
 
-<tr class="first-positions">
-    <th scope="row">{{ index + 1 }}</th>
-    <td>{{ team.name }}</td>
-    <td>{{ team.wins }}</td>
-    <td>{{ team.defeats }}</td>
-    <td>{{ team.draws }}</td>
-    <td>{{ team.points }}</td>
-    <td class="w-25">
-        <a class="btn btn-primary w-25 mr-5" [routerLink]="['/team', index]"><fa-icon [icon]="faPen"></fa-icon></a>
-        <button class="btn btn-danger" [swal]="deleteSwal"><fa-icon [icon]="faTrashCan"></fa-icon></button>
-    </td>
+<tr [ngClass]="classesToRow">
+  <th scope="row">{{ index + 1 }}</th>
+  <td>{{ team.name }}</td>
+  <td>
+    <button class="btn btn-danger fw-bold" (click)="changeMatchValuesEmit('decrease', 'wins')">-</button>
+    <span class="p-3">{{ team.wins }}</span>
+    <button class="btn btn-success fw-bold" (click)="changeMatchValuesEmit('increase', 'wins')">+</button>
+  </td>
+  <td>
+    <button class="btn btn-danger fw-bold" (click)="changeMatchValuesEmit('decrease', 'defeats')">-</button>
+    <span class="p-3">{{ team.defeats }}</span>
+    <button class="btn btn-success fw-bold" (click)="changeMatchValuesEmit('increase', 'defeats')">+</button>
+  </td>
+  <td>
+    <button class="btn btn-danger fw-bold" (click)="changeMatchValuesEmit('decrease', 'draws')">-</button>
+    <span class="p-3">{{ team.draws }}</span>
+    <button class="btn btn-success fw-bold " (click)="changeMatchValuesEmit('increase', 'draws')">+</button>
+  </td>
+  <td class="fw-bold">{{ team.points }}</td>
+  <td class="w-25">
+    <a class="btn btn-primary w-25 mr-5" [routerLink]="['/team', index]">
+      <fa-icon [icon]="faPen"></fa-icon>
+    </a>
+    <button class="btn btn-danger" [swal]="deleteSwal">
+      <fa-icon [icon]="faTrashCan"></fa-icon>
+    </button>
+  </td>
 </tr>

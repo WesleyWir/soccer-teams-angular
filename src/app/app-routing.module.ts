@@ -4,9 +4,10 @@ import { TeamComponent } from './team/team/team.component';
 import { TableComponent } from './teams-table/table/table.component';
 
 const routes: Routes = [
-  {  path: 'team', component: TeamComponent},
-  {  path: 'team/:id', component: TeamComponent},
-  {  path: 'teams', component: TableComponent}
+  { path: '', redirectTo: 'teams', pathMatch: 'full' },
+  { path: 'team', component: TeamComponent },
+  { path: 'team/:id', component: TeamComponent },
+  { path: 'teams', component: TableComponent }
 ];
 
 @NgModule({

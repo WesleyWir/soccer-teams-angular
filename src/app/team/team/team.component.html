@@ -3,16 +3,19 @@
         <form class="p-5 w-75" (ngSubmit)="onSave()">
             <div class="form-group mb-3">
                 <label for="name">Nome</label>
-                <input type="text" name="name" [(ngModel)]="team.name" class="form-control" id="name-input" aria-describedby="name">
+                <input type="text" name="name" [(ngModel)]="team.name" class="form-control" id="name-input" aria-describedby="name" required>
             </div>
             <div class="form-group row mb-3">
                 <div class="col">
+                    <label for="wins">Vitórias</label>
                     <input type="number" name="wins" [(ngModel)]="team.wins" min="0" class="form-control" id="wins-input" aria-describedby="wins" placeholder="Vitórias">
                 </div>
                 <div class="col">
+                    <label for="draws">Empates</label>
                     <input type="number" name="draws" [(ngModel)]="team.draws" min="0" class="form-control" id="draws-input" aria-describedby="wins" placeholder="Empates">
                 </div>
                 <div class="col">
+                    <label for="defeats">Derrotas</label>
                     <input type="number" name="defeats" [(ngModel)]="team.defeats" min="0" class="form-control" id="defeats-input" aria-describedby="wins" placeholder="Derrotas">
                 </div>
             </div>

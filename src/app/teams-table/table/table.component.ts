@@ -21,4 +21,12 @@ export class TableComponent implements OnInit {
   deleteEvent(i: number) {
     this.teamsService.deleteTeam(i);
   }
+
+  changeMatchNumbers(values: {i: number, symb: string, type: string}){
+    if(values.symb == 'increase'){
+      return this.teamsService.increase(values.i, values.type);
+    }
+
+    return this.teamsService.decrease(values.i, values.type);
+  }
 }

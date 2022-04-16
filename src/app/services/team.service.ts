@@ -30,6 +30,26 @@ export class TeamService {
     return this.teams.splice(id, 1);
   }
 
+  increase(id: number, type: string){
+    this.teams.map((team: Team, index) => {
+      if (index == id) {
+        team[type]++;
+        return this.countPoints(team);
+      }
+    })
+    this.orderTeams()
+  }
+
+  decrease(id: number, type: string){
+    this.teams.map((team: Team, index) => {
+      if (index == id) {
+        team[type]--;
+        return this.countPoints(team);
+      }
+    })
+    this.orderTeams()
+  }
+
   getAllTeams(): Team[] {
     return this.teams;
   }

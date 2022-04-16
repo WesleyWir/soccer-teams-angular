@@ -1,7 +1,7 @@
 <main class="container">
     <section id="table-header" class="d-flex justify-content-between">
         <div class="title">
-            <h2>Tabela</h2>
+            <h2>Tabela do Campeonato</h2>
         </div>
         <div class="btns">
             <a class="btn btn-success fw-bold" routerLink="/team">Adicionar Time</a>
@@ -20,7 +20,7 @@
                         <th scope="col">Pts</th>
                     </tr>
                 </thead>
-                <tbody app-table-row [team]="team" (deleteEvent)="deleteEvent($event)" [index]="i" *ngFor="let team of teams; let i = index">
+                <tbody app-table-row [team]="team" (deleteEvent)="deleteEvent($event)" (changeMatchValues)="changeMatchNumbers($event)" [index]="i" *ngFor="let team of teams; let i = index">
                 </tbody>
             </table>
         </div>
