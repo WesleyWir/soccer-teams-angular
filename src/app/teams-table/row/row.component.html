@@ -1,36 +1,12 @@
 <tr class="first-positions">
-    <th scope="row">1</th>
-    <td>Time x</td>
-    <td>2</td>
-    <td>10</td>
-    <td>1</td>
-    <td>7</td>
+    <th scope="row">{{ index }}</th>
+    <td>{{ team.name }}</td>
+    <td>{{ team.wins }}</td>
+    <td>{{ team.defeats }}</td>
+    <td>{{ team.draws }}</td>
+    <td>{{ team.points }}</td>
     <td class="w-25">
-        <button class="btn btn-primary w-25 mr-5"><fa-icon [icon]="faPen"></fa-icon></button>
-        <button class="btn btn-danger"><fa-icon [icon]="faTrashCan"></fa-icon></button>
-    </td>
-</tr>
-<tr class="middle-position">
-    <th scope="row">5</th>
-    <td>Time x</td>
-    <td>2</td>
-    <td>10</td>
-    <td>1</td>
-    <td>7</td>
-    <td class="w-25">
-        <button class="btn btn-primary w-25 mr-5"><fa-icon [icon]="faPen"></fa-icon></button>
-        <button class="btn btn-danger"><fa-icon [icon]="faTrashCan"></fa-icon></button>
-    </td>
-</tr>
-<tr class="last-positions">
-    <th scope="row">16</th>
-    <td>Time x</td>
-    <td>2</td>
-    <td>10</td>
-    <td>1</td>
-    <td>7</td>
-    <td class="w-25">
-        <button class="btn btn-primary w-25 mr-5"><fa-icon [icon]="faPen"></fa-icon></button>
+        <a class="btn btn-primary w-25 mr-5" [routerLink]="['/team', index]"><fa-icon [icon]="faPen"></fa-icon></a>
         <button class="btn btn-danger"><fa-icon [icon]="faTrashCan"></fa-icon></button>
     </td>
 </tr>

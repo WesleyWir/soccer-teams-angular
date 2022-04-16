@@ -20,7 +20,7 @@
                         <th scope="col">Pts</th>
                     </tr>
                 </thead>
-                <tbody app-table-row>
+                <tbody app-table-row [team]="team" [index]="i" *ngFor="let team of teams; let i = index">
                 </tbody>
             </table>
         </div>
