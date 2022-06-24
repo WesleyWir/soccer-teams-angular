@@ -22,7 +22,7 @@
   </td>
   <td class="fw-bold">{{ team.points }}</td>
   <td class="w-25">
-    <a class="btn btn-primary w-25 mr-5" [routerLink]="['/team', index]">
+    <a class="btn btn-primary w-25 mr-5" [routerLink]="['/team', team.id]">
       <fa-icon [icon]="faPen"></fa-icon>
     </a>
     <button class="btn btn-danger" [swal]="deleteSwal">

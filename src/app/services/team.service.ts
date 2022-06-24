@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Team } from '../models/team.model';
 
 @Injectable({
@@ -7,55 +9,48 @@ import { Team } from '../models/team.model';
 export class TeamService {
 
   private teams: Team[] = [];
+  private URL = environment.apiUrl + 'teams/';
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
   addTeam(team: Team) {
     this.countPoints(team);
-    this.teams.push(team);
+    this.http.post<Team>(this.URL, team).subscribe();
     this.orderTeams();
   }
 
   updateTeam(id: number, editedTeam: Team) {
-    this.teams.map((team: Team, index) => {
-      if (index == id) {
-        this.countPoints(editedTeam);
-        return { ...team, editedTeam };
-      }
-    })
-    this.orderTeams()
+    return this.http.put<Team>(this.URL+id, editedTeam);
   }
 
   deleteTeam(id: number) {
-    return this.teams.splice(id, 1);
+    return this.http.delete(this.URL + id);
   }
 
   increase(id: number, type: string){
-    this.teams.map((team: Team, index) => {
-      if (index == id) {
-        team[type]++;
-        return this.countPoints(team);
-      }
-    })
+    this.getTeamById(id).subscribe(res => {
+      const team = res;
+      team[type]++;
+      this.updateTeam(team.id, team).subscribe()
+    });    
     this.orderTeams()
   }
 
   decrease(id: number, type: string){
-    this.teams.map((team: Team, index) => {
-      if (index == id) {
-        team[type]--;
-        return this.countPoints(team);
-      }
-    })
+    this.getTeamById(id).subscribe(res => {
+      const team = res;
+      team[type]--;
+      this.updateTeam(team.id, team).subscribe()
+    });    
     this.orderTeams()
   }
 
-  getAllTeams(): Team[] {
-    return this.teams;
+  getAllTeams(){
+    return this.http.get<any>(this.URL);
   }
 
   getTeamById(id: any) {
-    return this.teams[id];
+    return this.http.get<any>(this.URL+id);
   }
 
   private orderTeams() {

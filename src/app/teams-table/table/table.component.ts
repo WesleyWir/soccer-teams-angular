@@ -8,25 +8,36 @@ import { TeamService } from 'src/app/services/team.service';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  teams: Team[] = [];
+  teams: any;
 
   constructor(
     public teamsService: TeamService) {
-    this.teams = this.teamsService.getAllTeams();
+    this.teamsService.getAllTeams().subscribe(res => {
+      this.teams = res.content;
+    });
   }
 
   ngOnInit(): void {
   }
 
   deleteEvent(i: number) {
-    this.teamsService.deleteTeam(i);
+    this.teamsService.deleteTeam(i).subscribe(res => {
+      return this.teamsService.getAllTeams().subscribe(res => {
+        this.teams = res.content;
+      });
+    });
+
   }
 
-  changeMatchNumbers(values: {i: number, symb: string, type: string}){
-    if(values.symb == 'increase'){
-      return this.teamsService.increase(values.i, values.type);
+  changeMatchNumbers(values: { i: number, symb: string, type: string }) {
+    if (values.symb == 'increase') {
+      this.teamsService.increase(values.i, values.type);
+    } else {
+      this.teamsService.decrease(values.i, values.type);
     }
 
-    return this.teamsService.decrease(values.i, values.type);
+    return this.teamsService.getAllTeams().subscribe(res => {
+      this.teams = res.content;
+    });
   }
 }

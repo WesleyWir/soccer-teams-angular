@@ -30,11 +30,11 @@ export class RowComponent implements OnInit {
   }
 
   deleteButtonPress() {
-    this.deleteEvent.emit(this.index);
+    this.deleteEvent.emit(this.team.id);
   }
 
   changeMatchValuesEmit(symb: string, type: string) {
-    this.changeMatchValues.emit({ i: this.index, symb, type });
+    this.changeMatchValues.emit({ i: this.team.id, symb, type });
   }
 
   private setupRowClasses(){

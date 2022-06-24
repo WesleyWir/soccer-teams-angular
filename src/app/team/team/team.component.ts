@@ -9,7 +9,7 @@ import { TeamService } from 'src/app/services/team.service';
   styleUrls: ['./team.component.scss']
 })
 export class TeamComponent implements OnInit {
-  public team: Team;
+  public team: any;
   public id: number|undefined = undefined;
 
   constructor(
@@ -18,7 +18,9 @@ export class TeamComponent implements OnInit {
     public teamsService: TeamService) { 
     if(this.route.snapshot.paramMap.get('id')){
       this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-      this.team = this.teamsService.getTeamById(this.id);
+      this.teamsService.getTeamById(this.id).subscribe(res => {
+        this.team = res;
+      });
     }else{
       this.team = new Team();
     }
@@ -29,7 +31,7 @@ export class TeamComponent implements OnInit {
 
   onSave(){
     if(this.id !== undefined){
-      this.teamsService.updateTeam(this.id, this.team);
+      this.teamsService.updateTeam(this.id, this.team).subscribe();
     }else{
       this.teamsService.addTeam(this.team);
     }
